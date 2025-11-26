@@ -5,26 +5,23 @@ services:
     env: python
     region: frankfurt
     plan: starter
-    buildCommand: "pip install -r backend/requirements.txt"
-    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
     workingDirectory: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
     autoDeploy: true
-
-    # If you want CORS to allow frontend domain:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11
 
-
-  # ===== Frontend (Vite Build) =====
+  # ===== Frontend (Vite) =====
   - type: web
     name: wastage-frontend
     env: node
     region: frankfurt
     plan: starter
+    workingDirectory: frontend
     buildCommand: "npm install && npm run build"
     startCommand: "npm run preview -- --port 10000"
-    workingDirectory: frontend
     autoDeploy: true
     envVars:
       - key: VITE_BACKEND_URL
