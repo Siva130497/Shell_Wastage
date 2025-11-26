@@ -4,21 +4,21 @@ services:
     name: wastage-backend
     env: python
     region: frankfurt
-    plan: starter
+    plan: free
     rootDir: backend
     buildCommand: "pip install -r requirements.txt"
     startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: "3.11"
+        value: "3.11.9"
 
   # ===== Frontend (Vite) =====
   - type: web
     name: wastage-frontend
     env: node
     region: frankfurt
-    plan: starter
+    plan: free
     rootDir: frontend
     buildCommand: "npm install && npm run build"
     startCommand: "npm run preview -- --port 10000"
