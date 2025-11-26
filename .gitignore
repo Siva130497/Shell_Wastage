@@ -1,0 +1,36 @@
+# ===== Global ignores =====
+.DS_Store
+*.log
+.env
+.env.*
+
+
+# ===== Python backend =====
+backend/__pycache__/
+backend/*.pyc
+backend/venv/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.ruff_cache/
+
+# PDF processing temp files
+backend/*.pdf
+backend/tmp/
+backend/**/*.pdf
+
+
+# ===== Node frontend =====
+frontend/node_modules/
+frontend/.parcel-cache/
+frontend/dist/
+frontend/.vite/
+frontend/.DS_Store
+
+# Build output
+dist/
+build/
+
+# Lock files backup
+package-lock.json.old
+yarn.lock.old
+npm-debug.log*

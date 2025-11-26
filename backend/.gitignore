@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+venv/
+tmp/
+*.pdf
+
+# ReportLab / Matplotlib temp images
+*.png
