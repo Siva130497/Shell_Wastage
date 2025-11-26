@@ -7,7 +7,14 @@ function App() {
   const [error, setError] = useState("");
   const [downloadUrl, setDownloadUrl] = useState(null);
 
-  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
+  const rawBackend =
+  import.meta.env.VITE_BACKEND_URL || // optional manual override
+  import.meta.env.VITE_BACKEND_HOST || // injected by Render
+  "http://localhost:8000";             // local dev fallback
+
+const backendUrl = rawBackend.startsWith("http")
+  ? rawBackend
+  : `https://${rawBackend}`;
 
   const handleSubmit = async (e) => {
     e.preventDefault();

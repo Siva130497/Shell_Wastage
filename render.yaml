@@ -11,7 +11,7 @@ services:
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11
+        value: "3.11"
 
   # ===== Frontend (Vite) =====
   - type: web
@@ -24,7 +24,9 @@ services:
     startCommand: "npm run preview -- --port 10000"
     autoDeploy: true
     envVars:
-      - key: VITE_BACKEND_URL
+      # We’ll inject just the backend HOST, not full URL
+      - key: VITE_BACKEND_HOST
         fromService:
+          type: web
           name: wastage-backend
-          property: url
+          property: host
