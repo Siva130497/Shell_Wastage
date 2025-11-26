@@ -21,7 +21,7 @@ services:
     plan: free
     rootDir: frontend
     buildCommand: "npm install && npm run build"
-    startCommand: "npm run preview -- --port 10000"
+    startCommand: "npm run preview -- --host 0.0.0.0 --port $PORT"
     autoDeploy: true
     envVars:
       # We’ll inject just the backend HOST, not full URL
